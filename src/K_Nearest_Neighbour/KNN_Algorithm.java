@@ -43,24 +43,18 @@ public class KNN_Algorithm {
         ManageDistanceFromDataset(image);
         distance_pairs.sort(new Distance_Comparator());
 
-        if (KthVal < distance_pairs.size())
-            k = KthVal;
-        else
-            return "Invalid K value";
+        if (KthVal < distance_pairs.size())     k = KthVal;
+        else                                    return "Invalid K value";
 
         for (int i=0; i<k; i++) {
             Distance_Pair pair = distance_pairs.get(i);
 
-            if (pair.image.Type().equals(datasetType1.get(0).Type()))
-                count_type1++;
-            else if (pair.image.Type().equals(datasetType2.get(0).Type()))
-                count_type2++;
+            if (pair.image.Type().equals(datasetType1.get(0).Type()))       count_type1++;
+            else if (pair.image.Type().equals(datasetType2.get(0).Type()))  count_type2++;
         }
 
-        if (count_type1 > count_type2)
-            sb.append(datasetType1.get(0).Type());
-        else
-            sb.append(datasetType2.get(0).Type());
+        if (count_type1 > count_type2)  sb.append(datasetType1.get(0).Type());
+        else                            sb.append(datasetType2.get(0).Type());
 
         return sb.toString();
     }
