@@ -3,15 +3,22 @@ package K_Nearest_Neighbour;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Comparator;
 
 class Distance_Pair {
-    double distance;
-    ImageVector image;
+    public double distance;
+    public ImageVector image;
 
     public Distance_Pair (double distance, ImageVector image) {
         this.distance = distance;
         this.image = image;
+    }
+}
+
+class Distance_Comparator implements Comparator<Distance_Pair> {
+    @Override
+    public int compare(Distance_Pair o1, Distance_Pair o2) {
+        return Double.compare(o2.distance, o1.distance);
     }
 }
 
@@ -26,13 +33,34 @@ public class KNN_Algorithm {
         this.datasetType2 = datasetType2;
     }
 
-    public String KNN_decesion (String filePath, String imageType) throws IOException {
+    public String KNN_decesion (String filePath, String imageType, int KthVal) throws IOException {
+        int k, count_type1 = 0, count_type2 = 0;
         StringBuilder sb = new StringBuilder();
 
         File ImageFile = new File(filePath);
         ImageVector image = new ImageVector(ImageFile, imageType);
 
+        ManageDistanceFromDataset(image);
+        distance_pairs.sort(new Distance_Comparator());
 
+        if (KthVal < distance_pairs.size())
+            k = KthVal;
+        else
+            return "Invalid K value";
+
+        for (int i=0; i<k; i++) {
+            Distance_Pair pair = distance_pairs.get(i);
+
+            if (pair.image.Type().equals(datasetType1.get(0).Type()))
+                count_type1++;
+            else if (pair.image.Type().equals(datasetType2.get(0).Type()))
+                count_type2++;
+        }
+
+        if (count_type1 > count_type2)
+            sb.append(datasetType1.get(0).Type());
+        else
+            sb.append(datasetType2.get(0).Type());
 
         return sb.toString();
     }
@@ -63,7 +91,4 @@ public class KNN_Algorithm {
 
         return distance;
     }
-
-
-
 }
