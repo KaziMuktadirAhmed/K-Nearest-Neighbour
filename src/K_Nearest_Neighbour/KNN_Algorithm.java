@@ -43,7 +43,7 @@ public class KNN_Algorithm {
         ManageDistanceFromDataset(image);
         distance_pairs.sort(new Distance_Comparator());
 
-        if (KthVal < distance_pairs.size())     k = KthVal;
+        if (KthVal > distance_pairs.size())     k = KthVal;
         else                                    return "Invalid K value";
 
         for (int i=0; i<k; i++) {
