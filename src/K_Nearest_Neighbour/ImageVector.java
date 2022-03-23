@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ImageVector {
     private String ImageType;
     private final File ImageFile;
-    private ArrayList<Integer> Vector = new ArrayList<>();
+    public ArrayList<Integer> Vector = new ArrayList<>();
 
     public ImageVector (File ImageFile, String ImageType) throws IOException {
         this.ImageFile = ImageFile;
