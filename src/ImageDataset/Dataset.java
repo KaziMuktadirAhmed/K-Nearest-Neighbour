@@ -14,12 +14,12 @@ public class Dataset {
     private ArrayList<File> ImageSet = new ArrayList<>();
     private ArrayList<ArrayList<Integer>> TrainingImagePoints = new ArrayList();
 
-    public Dataset(String filePath) throws IOException {
+    public Dataset (String filePath) throws IOException {
         this.filePath = filePath;
         readImageFromFile();
     }
 
-    public void setFilePath(String filePath) throws IOException {
+    public void setFilePath (String filePath) throws IOException {
         this.filePath = filePath;
         readImageFromFile();
     }

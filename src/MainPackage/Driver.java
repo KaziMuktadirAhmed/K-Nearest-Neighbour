@@ -1,7 +1,7 @@
 package MainPackage;
 
 public class Driver {
-    public void  run () {
+    public void run () {
         System.out.println("Hello");
     }
 
