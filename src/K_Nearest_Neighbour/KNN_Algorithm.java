@@ -64,18 +64,12 @@ public class KNN_Algorithm {
 
         for (ImageVector vector : datasetType1) {
             double distance = CalculateDistance(vector, InputImage);
-
-//            System.out.println("distance: " + distance + " Type: " + vector.Type());
-
             pair = new Distance_Pair(distance, vector);
             distance_pairs.add(pair);
         }
 
         for (ImageVector vector : datasetType2) {
             double distance = CalculateDistance(vector, InputImage);
-
-//            System.out.println("distance: " + distance + " Type: " + vector.Type());
-
             pair = new Distance_Pair(distance, vector);
             distance_pairs.add(pair);
         }

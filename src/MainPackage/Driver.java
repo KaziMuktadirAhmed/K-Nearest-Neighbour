@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Driver {
-//    KNN_Algorithm algorithm;
 
     public void run () throws IOException {
         System.out.println("Run");
