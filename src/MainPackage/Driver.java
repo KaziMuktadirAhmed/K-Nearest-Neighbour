@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Driver {
-    KNN_Algorithm algorithm;
+//    KNN_Algorithm algorithm;
 
     public void run () throws IOException {
         System.out.println("Run");
 
-//        KNN_Algorithm algorithm;
+        KNN_Algorithm algorithm = new KNN_Algorithm();
         buildTestSet(algorithm);
 
         String decidedType = algorithm.KNN_decesion("sample.jpg", "Cat", 5);
@@ -30,15 +30,15 @@ public class Driver {
 
         File[] FileType1 = new File("ImageSetType1").listFiles();
         for (File file : FileType1) {
-            datasetType1.add(new ImageVector(file, "Type 1"));
+            datasetType1.add(new ImageVector(file, "Cat"));
         }
 
         File[] FileType2 = new File("ImageSetType2").listFiles();
         for (File file : FileType2) {
-            datasetType2.add(new ImageVector(file, "Type 2"));
+            datasetType2.add(new ImageVector(file, "Dog"));
         }
 
-        algorithm = new KNN_Algorithm(datasetType1, datasetType2);
+        algorithm.setDataset(datasetType1, datasetType2);
     }
 
 }

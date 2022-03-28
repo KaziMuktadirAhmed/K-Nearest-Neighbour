@@ -28,7 +28,7 @@ public class KNN_Algorithm {
 
     private ArrayList<Distance_Pair> distance_pairs = new ArrayList<>();
 
-    public KNN_Algorithm (ArrayList<ImageVector> datasetType1, ArrayList<ImageVector> datasetType2) {
+    public void setDataset(ArrayList<ImageVector> datasetType1, ArrayList<ImageVector> datasetType2) {
         this.datasetType1 = datasetType1;
         this.datasetType2 = datasetType2;
     }
@@ -43,7 +43,7 @@ public class KNN_Algorithm {
         ManageDistanceFromDataset(image);
         distance_pairs.sort(new Distance_Comparator());
 
-        if (KthVal > distance_pairs.size())     k = KthVal;
+        if (KthVal < distance_pairs.size())     k = KthVal;
         else                                    return "Invalid K value";
 
         for (int i=0; i<k; i++) {
@@ -79,7 +79,8 @@ public class KNN_Algorithm {
         double distance = 0.0;
 
         for (int i=0; i<a.Vector.size(); i++) {
-            distance += (a.Vector.get(i) - b.Vector.get(i)) * (a.Vector.get(i) - b.Vector.get(i));
+            int x1 = a.Vector.get(i), x2 = b.Vector.get(i);
+            distance += (x1-x2) * (x1-x2);
         }
         distance = Math.sqrt(distance);
 

@@ -28,6 +28,7 @@ public class ImageVector {
 
     private void convertToImageVector() throws IOException {
         BufferedImage image = ImageIO.read(ImageFile);
+        image = resizeImage(400, 400, image);
 
         for (int i=0; i<image.getHeight(); i++) {
             for (int j=0; j<image.getWidth(); j++) {
@@ -37,6 +38,14 @@ public class ImageVector {
                 this.Vector.add(pixel.getBlue());
             }
         }
+    }
+
+    private BufferedImage resizeImage (int targetHeight, int targetWidth, BufferedImage originalImage) {
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D graphics2D = resizedImage.createGraphics();
+        graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+        graphics2D.dispose();
+        return resizedImage;
     }
 }
 
