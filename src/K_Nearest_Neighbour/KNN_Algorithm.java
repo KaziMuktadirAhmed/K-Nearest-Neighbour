@@ -18,7 +18,7 @@ class Distance_Pair {
 class Distance_Comparator implements Comparator<Distance_Pair> {
     @Override
     public int compare(Distance_Pair o1, Distance_Pair o2) {
-        return Double.compare(o2.distance, o1.distance);
+        return Double.compare(o1.distance, o2.distance);
     }
 }
 
@@ -64,12 +64,18 @@ public class KNN_Algorithm {
 
         for (ImageVector vector : datasetType1) {
             double distance = CalculateDistance(vector, InputImage);
+
+            System.out.println("distance: " + distance + " Type: " + vector.Type());
+
             pair = new Distance_Pair(distance, vector);
             distance_pairs.add(pair);
         }
 
         for (ImageVector vector : datasetType2) {
             double distance = CalculateDistance(vector, InputImage);
+
+            System.out.println("distance: " + distance + " Type: " + vector.Type());
+
             pair = new Distance_Pair(distance, vector);
             distance_pairs.add(pair);
         }

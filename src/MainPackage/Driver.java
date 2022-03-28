@@ -16,7 +16,7 @@ public class Driver {
         KNN_Algorithm algorithm = new KNN_Algorithm();
         buildTestSet(algorithm);
 
-        String decidedType = algorithm.KNN_decesion("sample.jpg", "Cat", 5);
+        String decidedType = algorithm.KNN_decesion("sample1.jpg", "Cat", 5);
         System.out.println("Decided type: " + decidedType);
     }
 
