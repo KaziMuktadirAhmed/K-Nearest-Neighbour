@@ -33,12 +33,11 @@ public class KNN_Algorithm {
         this.datasetType2 = datasetType2;
     }
 
-    public String KNN_decesion (String filePath, String imageType, int KthVal) throws IOException {
+    public String KNN_decesion (File imageFile, String imageType, int KthVal) throws IOException {
         int k, count_type1 = 0, count_type2 = 0;
         StringBuilder sb = new StringBuilder();
 
-        File ImageFile = new File(filePath);
-        ImageVector image = new ImageVector(ImageFile, imageType);
+        ImageVector image = new ImageVector(imageFile, imageType);
 
         ManageDistanceFromDataset(image);
         distance_pairs.sort(new Distance_Comparator());

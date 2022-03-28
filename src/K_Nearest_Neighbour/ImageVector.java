@@ -29,14 +29,14 @@ public class ImageVector {
     private void convertToImageVector() throws IOException {
         BufferedImage image = ImageIO.read(ImageFile);
         image = resizeImage(400, 400, image);
+        int[] idkkys = image.getRGB(0,0,image.getWidth(),image.getHeight(), null, 0, image.getHeight());
+        this.Vector = new ArrayList<>();
+        for (int i=0; i<idkkys.length; i++) {
 
-        for (int i=0; i<image.getHeight(); i++) {
-            for (int j=0; j<image.getWidth(); j++) {
-                Color pixel = new Color(image.getRGB(j, i));
+                Color pixel = new Color(idkkys[i]);
                 this.Vector.add(pixel.getRed());
                 this.Vector.add(pixel.getGreen());
                 this.Vector.add(pixel.getBlue());
-            }
         }
     }
 
