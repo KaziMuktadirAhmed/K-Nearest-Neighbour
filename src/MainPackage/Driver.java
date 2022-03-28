@@ -8,13 +8,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Driver {
+    KNN_Algorithm algorithm;
+
     public void run () throws IOException {
         System.out.println("Run");
 
-        KNN_Algorithm algorithm = null;
+//        KNN_Algorithm algorithm;
         buildTestSet(algorithm);
 
-        algorithm.KNN_decesion("", "", 5);
+        String decidedType = algorithm.KNN_decesion("sample.jpg", "Cat", 5);
+        System.out.println("Decided type: " + decidedType);
     }
 
     public void test () {
